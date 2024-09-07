@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload and Execution</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>File Upload and Execution</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <label for="file">Choose a Python file to upload:</label>
+        {{ form.file() }}
+        {{ form.submit() }}
+        <a href="{{ url_for('download') }}" class="btn btn-primary">Download Output</a><br />
+    </form>
+
+    {% if output_content %}
+        <h2>Output:</h2>
+        <pre>{{ output_content }}</pre>
+        <h2>Download Generated Output File:</h2>
+    {% endif %}
+</body>
+</html>
